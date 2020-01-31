@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world
+  name: hello-world-jab
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world
+      app: hello-world-jab
   template:
     metadata:
       labels:
-        app: hello-world
+        app: hello-world-jab
     spec:
       terminationGracePeriodSeconds: 0
       containers:
@@ -25,15 +25,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world
+  name: hello-world-jab
   annotations:
     dev.okteto.com/auto-ingress: "true"
   labels:
-    app: hello-world
+    app: hello-world-jab
 spec:
   type: ClusterIP
   ports:
-    - name: hello-world
+    - name: hello-world-jab
       port: 8080
   selector:
-    app: hello-world
+    app: hello-world-jab
